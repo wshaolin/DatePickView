@@ -146,11 +146,6 @@ typedef enum{
     [super setFrame:[self calculateFrame]];
 }
 
-- (void)setSelectDate:(NSDate *)selectDate{
-    _selectDate = selectDate;
-    [self.datePicker setDate:selectDate animated:YES];
-}
-
 - (void)setMinimumDate:(NSDate *)minimumDate{
     _minimumDate = minimumDate;
     self.datePicker.minimumDate = minimumDate;
@@ -192,7 +187,7 @@ typedef enum{
             [self hide];
             break;
         case DatePickerToolBarItemTypeToday:
-            self.selectDate = [NSDate date];
+            [self.datePicker setDate:[NSDate date] animated:YES];
             break;
         case DatePickerToolBarItemTypeNone:
             break;
@@ -200,8 +195,7 @@ typedef enum{
             [self setYesterday];
             break;
         case DatePickerToolBarItemTypeDone:
-            // 解决8小时的偏差
-            self.selectDate = [self.datePicker.date dateByAddingTimeInterval:[self.timeZone secondsFromGMTForDate:self.datePicker.date]];
+            self.selectDate = self.datePicker.date;
             if([self.delegate respondsToSelector:@selector(datePickerViewDidClickDone:)]){
                 [self.delegate datePickerViewDidClickDone:self];
             }
@@ -216,13 +210,12 @@ typedef enum{
     NSDateComponents *components = [[NSDateComponents alloc] init];
 	NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     [components setDay:-1];
-    self.selectDate = [calendar dateByAddingComponents:components toDate: [NSDate date] options:0];
+    [self.datePicker setDate:[calendar dateByAddingComponents:components toDate: [NSDate date] options:0] animated:YES];
 }
 
 - (NSString *)stringWithFormat:(NSString *)dateFormat{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    // 解决8小时的偏差
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    dateFormatter.timeZone = self.timeZone;
     dateFormatter.locale = self.locale;
     [dateFormatter setDateFormat:dateFormat];
     return [dateFormatter stringFromDate:self.selectDate];
