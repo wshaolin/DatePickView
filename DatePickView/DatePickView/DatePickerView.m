@@ -9,14 +9,16 @@
 #import "DatePickerView.h"
 
 #define SYSTEM_VERSION_IOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define SCREEN_INCH_4 ([UIScreen mainScreen].bounds.size.height == 568)
+
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 #define DATE_PICKER_VIEW_WIDTH SCREEN_WIDTH
-#define DATE_PICKER_VIEW_HEIGHT 200.0
+#define DATE_PICKER_VIEW_HEIGHT (SCREEN_INCH_4 ? 260.0 : 200)
 
-#define DATE_PICKER_VIEW_TOOLBAR_HEIGHT 40.0
-#define DATE_PICKER_VIEW_TOOLBAR_ITEM_WIDTH 51.0
+#define DATE_PICKER_VIEW_TOOLBAR_HEIGHT 44.0
+#define DATE_PICKER_VIEW_TOOLBAR_ITEM_WIDTH 50.0
 
 #define DATE_PICKER_VIEW_INTERVAL_CONTROL 0.0
 
