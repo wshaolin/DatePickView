@@ -146,7 +146,7 @@ typedef enum{
 
 - (void)setSelectDate:(NSDate *)selectDate{
     _selectDate = selectDate;
-    self.datePicker.date = selectDate;
+    [self.datePicker setDate:selectDate animated:YES];
 }
 
 - (void)setMinimumDate:(NSDate *)minimumDate{
@@ -191,15 +191,14 @@ typedef enum{
             break;
         case DatePickerToolBarItemTypeToday:
             self.selectDate = [NSDate date];
-            [self.datePicker setDate:self.selectDate animated:YES];
             break;
         case DatePickerToolBarItemTypeNone:
             break;
         case DatePickerToolBarItemTypeYesterday:
             [self setYesterday];
-            [self.datePicker setDate:self.selectDate animated:YES];
             break;
         case DatePickerToolBarItemTypeDone:
+            // 解决8小时的偏差
             self.selectDate = [self.datePicker.date dateByAddingTimeInterval:[self.timeZone secondsFromGMTForDate:self.datePicker.date]];
             if([self.delegate respondsToSelector:@selector(datePickerViewDidClickDone:)]){
                 [self.delegate datePickerViewDidClickDone:self];
@@ -215,11 +214,12 @@ typedef enum{
     NSDateComponents *components = [[NSDateComponents alloc] init];
 	NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     [components setDay:-1];
-    self.selectDate = [calendar dateByAddingComponents:components toDate: self.selectDate options:0];
+    self.selectDate = [calendar dateByAddingComponents:components toDate: [NSDate date] options:0];
 }
 
 - (NSString *)stringWithFormat:(NSString *)dateFormat{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // 解决8小时的偏差
     dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
     dateFormatter.locale = self.locale;
     [dateFormatter setDateFormat:dateFormat];

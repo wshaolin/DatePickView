@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A525F2C5-53BB-48EF-9F08-0403A208B2A4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DatePickView</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B038089B-5C89-4F3E-AF01-95690AA53F1D</key>
+		<string>https://github.com/wshaolin/DatePickView.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DatePickView.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B038089B-5C89-4F3E-AF01-95690AA53F1D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/wshaolin/DatePickView.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B038089B-5C89-4F3E-AF01-95690AA53F1D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B038089B-5C89-4F3E-AF01-95690AA53F1D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DatePickView</string>
+		</dict>
+	</array>
+</dict>
+</plist>
