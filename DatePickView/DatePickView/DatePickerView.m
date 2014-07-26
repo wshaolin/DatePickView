@@ -212,10 +212,10 @@ typedef enum{
 }
 
 - (void)setYesterday{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
-    NSDateComponents *comp = [calendar components:NSMonthCalendarUnit | NSDayCalendarUnit | NSYearCalendarUnit fromDate:[NSDate date]];
-    [comp setDay: (comp.day - 1)];
-    self.selectDate = [calendar dateFromComponents:comp];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+	NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    [components setDay:-1];
+    self.selectDate = [calendar dateByAddingComponents:components toDate: self.selectDate options:0];
 }
 
 - (NSString *)stringWithFormat:(NSString *)dateFormat{
